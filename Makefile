@@ -1,5 +1,5 @@
-CC=clang
-CFLAGS=-O0 -g -Wall -Wpointer-arith -ftrapv -fsanitize=undefined-trap -fsanitize-undefined-trap-on-error
+CC=g++
+CFLAGS=-O0 -g -Wall -Wpointer-arith -ftrapv -fsanitize-undefined-trap-on-error
 
 # or, for gcc...
 #CC=gcc
