@@ -123,7 +123,8 @@ main(int argc, char **argv)
 
     /* freeing a ring buffer sets the pointer to 0 */
     START_NEW_TEST(test_num);
-    ringbuf_free(rb1);
+    ringbuf_free(&rb1);
+	assert(!rb1);
     END_TEST(test_num);
 
     /* Different sizes */
@@ -139,7 +140,8 @@ main(int argc, char **argv)
     assert(ringbuf_is_empty(rb1));
     assert(ringbuf_tail(rb1) == ringbuf_head(rb1));
     assert(ringbuf_tail(rb1) == rb1_base);
-    ringbuf_free(rb1);
+    ringbuf_free(&rb1);
+	assert(!rb1);
     END_TEST(test_num);
 
     rb1 = ringbuf_new(RINGBUF_SIZE - 1);
@@ -1944,7 +1946,7 @@ main(int argc, char **argv)
     assert(ringbuf_head(rb3) == rb3_base + 1);
     assert(strncmp((const char *)ringbuf_tail(rb3), (const char *) buf + 2, 7) == 0);
     assert(strncmp((const char *) rb3_base, (const char *) buf + 9, 1) == 0);
-    ringbuf_free(rb3);
+    ringbuf_free(&rb3);
     END_TEST(test_num);
 
     /* ringbuf_findchr */
@@ -2193,8 +2195,8 @@ main(int argc, char **argv)
     assert(ringbuf_findchr(rb1, 'd', 1) == ringbuf_bytes_used(rb1));
     END_TEST(test_num);
     
-    ringbuf_free(rb1);
-    ringbuf_free(rb2);
+    ringbuf_free(&rb1);
+    ringbuf_free(&rb2);
     free(buf);
     free(buf2);
     free(dst);

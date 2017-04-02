@@ -58,7 +58,7 @@ ringbuf_buffer_size(const ringbuf_t *rb);
  * 0.
  */
 void
-ringbuf_free(ringbuf_t *rb);
+ringbuf_free(ringbuf_t **rb);
 
 /*
  * Reset a ring buffer to its initial state (empty).

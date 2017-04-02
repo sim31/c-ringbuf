@@ -70,11 +70,12 @@ ringbuf_reset(ringbuf_t* rb)
 }
 
 void
-ringbuf_free(ringbuf_t *rb)
+ringbuf_free(ringbuf_t **rb)
 {
-    assert(rb);
-    free(rb->buf);
-    rb = 0;
+    assert(rb && *rb);
+    free((*rb)->buf);
+	free(*rb);
+    *rb = 0;
 }
 
 size_t
